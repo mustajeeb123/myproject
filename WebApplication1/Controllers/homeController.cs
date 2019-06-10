@@ -19,7 +19,8 @@ namespace WebApplication1.Controllers
         [HttpPost]
         public ActionResult savedata(city ct)
         {
-            en.cities.Add(ct);
+
+           /// en.cities.Add(ct);
             en.SaveChanges();
             return View();
         }
