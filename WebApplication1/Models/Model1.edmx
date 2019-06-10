@@ -1,0 +1,127 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="cmpModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="cities">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CityName" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Jobapplicant">
+          <Key>
+            <PropertyRef Name="Jobseekerid" />
+          </Key>
+          <Property Name="Jobseekerid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="JobSeekername" Type="nvarchar" MaxLength="50" />
+          <Property Name="JobseekerEmail" Type="nvarchar" MaxLength="50" />
+          <Property Name="JobseekerCity" Type="nvarchar" MaxLength="50" />
+          <Property Name="JobSeekeruniversity" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="universities">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="uniName" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityContainer Name="cmpModelStoreContainer">
+          <EntitySet Name="cities" EntityType="Self.cities" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Jobapplicant" EntityType="Self.Jobapplicant" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="universities" EntityType="Self.universities" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="cmpModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="city">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CityName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Jobapplicant">
+          <Key>
+            <PropertyRef Name="Jobseekerid" />
+          </Key>
+          <Property Name="Jobseekerid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="JobSeekername" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="JobseekerEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="JobseekerCity" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="JobSeekeruniversity" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="university">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="uniName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityContainer Name="cmpEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="cities" EntityType="Self.city" />
+          <EntitySet Name="Jobapplicants" EntityType="Self.Jobapplicant" />
+          <EntitySet Name="universities" EntityType="Self.university" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="cmpModelStoreContainer" CdmEntityContainer="cmpEntities">
+          <EntitySetMapping Name="cities">
+            <EntityTypeMapping TypeName="cmpModel.city">
+              <MappingFragment StoreEntitySet="cities">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CityName" ColumnName="CityName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Jobapplicants">
+            <EntityTypeMapping TypeName="cmpModel.Jobapplicant">
+              <MappingFragment StoreEntitySet="Jobapplicant">
+                <ScalarProperty Name="Jobseekerid" ColumnName="Jobseekerid" />
+                <ScalarProperty Name="JobSeekername" ColumnName="JobSeekername" />
+                <ScalarProperty Name="JobseekerEmail" ColumnName="JobseekerEmail" />
+                <ScalarProperty Name="JobseekerCity" ColumnName="JobseekerCity" />
+                <ScalarProperty Name="JobSeekeruniversity" ColumnName="JobSeekeruniversity" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="universities">
+            <EntityTypeMapping TypeName="cmpModel.university">
+              <MappingFragment StoreEntitySet="universities">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="uniName" ColumnName="uniName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
