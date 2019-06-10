@@ -20,7 +20,7 @@ namespace WebApplication1.Controllers
         public ActionResult savedata(city ct)
         {
 
-         en.cities.Add(ct);
+        /// en.cities.Add(ct);
             en.SaveChanges();
             return View();
         }
